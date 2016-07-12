@@ -76,7 +76,7 @@
     "node-libs-browser": "^0.5.2",
     "node-sass": "^3.2.0",
     "opn": "^3.0.2",
-    "phantomjs": "^1.9.17",
+    "phantomjs": "^2.1.7",
     "postcss-loader": "^0.5.1",
     "react-hot-loader": "^1.2.8",
     "rimraf": "^2.4.1",
