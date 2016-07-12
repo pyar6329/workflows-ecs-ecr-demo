@@ -6,7 +6,7 @@ build:
         name: apt
         code: |
           sudo apt-get update -y
-          sudo apt-get install -y build-essential chrpath libssl-dev libxft-dev libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev wget
+          sudo apt-get install -y build-essential chrpath libssl-dev libxft-dev libfreetype6 libfreetype6-dev libfontconfig1 libfontconfig1-dev wget bzip2
           sudo wget "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2"
           sudo tar xvjf phantomjs-2.1.1-linux-x86_64.tar.bz2
           sudo mv phantomjs-2.1.1-linux-x86_64 /usr/local/share
@@ -36,6 +36,7 @@ initial-build:
         name: setup node env
         code: |
           export NODE_ENV=development
+          export PATH=/usr/local/bin:$PATH
 
     - npm-install
 
@@ -48,10 +49,12 @@ tests:
         name: setup node env
         code: |
           export NODE_ENV=development
+          export PATH=/usr/local/bin:$PATH
 
     - script:
         name: run tests
         code: |
+          export PATH=/usr/local/bin:$PATH
           npm test
 
 release-build:
@@ -59,11 +62,13 @@ release-build:
     - script:
         name: npm rebuild
         code: |
+          export PATH=/usr/local/bin:$PATH
           npm rebuild
 
     - script:
         name: build release code
         code: |
+          export PATH=/usr/local/bin:$PATH
           npm run build
           mv ./build/* $WERCKER_OUTPUT_DIR
           mv template.sh $WERCKER_OUTPUT_DIR
