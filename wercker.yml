@@ -3,9 +3,10 @@ box: node:6-slim
 build:
   steps:
     - script:
-        name: foo
+        name: apt
         code: |
-          echo "foo"
+          sudo apt-get update -y
+          sudo apt-get install -y build-essential
 
 dev:
   steps:
