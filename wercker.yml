@@ -18,6 +18,8 @@ dev:
         name: setup node env
         code: |
           export NODE_ENV=development
+          export PATH=/usr/local/bin:$PATH
+          echo $(which phantomjs)
 
     - npm-install
 
