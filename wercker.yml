@@ -1,5 +1,12 @@
 box: node:4-slim
 
+build:
+  steps:
+    - script:
+        name: foo
+        code: |
+          echo "foo"
+
 dev:
   steps:
     - script:
